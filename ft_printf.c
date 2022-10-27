@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/27 08:50:15 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/10/27 13:55:37 by yizhang       ########   odam.nl         */
+/*   Updated: 2022/10/27 14:13:10 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	ft_printf(const char *format, ...)
 	char			*s;
 	size_t			i;
 	unsigned int	value;
+	char			*s_value;
 	va_list			arg;
 
 	i = 0;
@@ -29,20 +30,16 @@ int	ft_printf(const char *format, ...)
 		if(s[i] == '%')
 		{
 			i++;
-			if (s[i] == c)
+			if (s[i] == 'c')
 			{
-				value = va_arg(arg,char);
-				ft_puchar(&value);
+				value = va_arg(arg,int);
+				ft_putchar(value);
 			}
-			else if (s[i] == s)
-			{
-				value = va_arg(arg,char *);
-				ft_putstr(value);
-			}
-
 		}
 		else
-		ft_puchar(&s[i]);
+		ft_putchar(&s[i]);
 		i++;
 	}
+	va_end(arg);
+	return (0);
 }

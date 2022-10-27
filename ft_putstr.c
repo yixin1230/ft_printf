@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/27 11:43:02 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/10/27 13:50:46 by yizhang       ########   odam.nl         */
+/*   Updated: 2022/10/27 14:01:20 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 int	ft_putstr(char *s)
 {
-	while(s)
+	int	i;
+
+	i = 0;
+	while(s[i])
 	{
-		ft_putchar(&*s);
-		s++;
+		ft_putchar(&s[i]);
+		i++;
 	}
 }
