@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/27 08:50:15 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/10/27 14:13:10 by yizhang       ########   odam.nl         */
+/*   Updated: 2022/11/15 09:24:47 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,41 @@
 
 int	ft_printf(const char *format, ...)
 {
-	char			*s;
-	size_t			i;
-	unsigned int	value;
-	char			*s_value;
-	va_list			arg;
-
+	char	*all;
+	int		i;
+	va_list	arg;
+	char	c_value;
+	char	*s_value;
+	
 	i = 0;
-	s = (char *)format;
+	all = (char *)format;
 	va_start(arg, format);
-	while (s[i])
+	while (all[i]
 	{
-		if(s[i] == '%')
+		if(all[i] == '%')
 		{
 			i++;
-			if (s[i] == 'c')
-			{
-				value = va_arg(arg,int);
-				ft_putchar(value);
-			}
+			if (all[i] == 'c')
+				ft_putchar()
+			else if (all[i] == 's')
+				ft_putstr(s);
+			else if (all[i] == 'p')
+				ft_putstr(s);
+			else if (all[i] == 'd')
+				ft_putstr(s);
+			else if (all[i] == 'i')
+				ft_putstr(s);
+			else if (all[i] == 'u')
+				ft_putstr(s);
+			else if (all[i] == 'x')
+				ft_putstr(s);
+			else if (all[i] == 'X')
+				ft_putstr(s);
+			else if (all[i] == '%')
+				ft_putstr(s);
 		}
 		else
-		ft_putchar(&s[i]);
+			ft_putchar(&s[i]);
 		i++;
 	}
 	va_end(arg);
