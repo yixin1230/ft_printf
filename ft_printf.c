@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/27 08:50:15 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/11/17 12:32:20 by yizhang       ########   odam.nl         */
+/*   Updated: 2022/11/17 18:50:06 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,18 @@ int	ft_printf(const char *format, ...)
 				ret += ft_putstr(va_arg(arg, char*));
 			else if (all[i] == 'p')
 				ret += ft_putptr(va_arg(arg, uintptr_t));
+			else if (all[i] == 'd')
+				ret += ft_putstr(ft_itoa(va_arg(arg, double)));
 			else if (all[i] == 'i')
 				ret += ft_putstr(ft_itoa(va_arg(arg, int)));
+			else if (all[i] == 'u')
+				ret += putwhatever_num(va_arg(arg, uintptr_t),"0123456789");
+			else if (all[i] == 'x')
+				ret += putwhatever_num(va_arg(arg, uintptr_t),"0123456789abcdef");
+			else if (all[i] == 'X')
+				ret += putwhatever_num(va_arg(arg, uintptr_t),"0123456789ABCDEF");
+			if (all[i] == '%')
+				ret += ft_putchar('%');
 		}
 		else
 		{

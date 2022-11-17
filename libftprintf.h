@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/27 10:56:35 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/11/17 12:29:09 by yizhang       ########   odam.nl         */
+/*   Updated: 2022/11/17 18:43:42 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int	ft_printf(const char *format, ...);
 int	ft_putchar(unsigned int c);
 int	ft_putstr(char *s);
 int	ft_putptr(uintptr_t p);
-int	puthex(uintptr_t p);
+int	putwhatever_num(uintptr_t p, char *s);
 
 #endif
