@@ -6,7 +6,7 @@
 #    By: yizhang <yizhang@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/27 10:41:38 by yizhang       #+#    #+#                  #
-#    Updated: 2022/11/15 11:41:45 by yizhang       ########   odam.nl          #
+#    Updated: 2022/11/17 20:11:36 by yizhang       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,10 @@ OBJS = ${SRCS:.c=.o}
 
 all: ${NAME}
 
-${NAME}: ${OBJS} ${LIBFT}
-	ar rcs ${OBJS} ${LIBFT}
+${NAME}: ${OBJS} 
+	make -C libft
+	cp libft/${LIBFT} ${NAME}
+	ar rcs ${NAME} ${OBJS}
 
 ${OBJS}: ${SRCS}
 	${CC} ${FLAGS} -c ${SRCS}
