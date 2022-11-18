@@ -41,16 +41,15 @@ int	ft_putptr(uintptr_t p)
 	int	i;
 	char	*s;
 
-	i = 2;
 	s = "0123456789abcdef";
-	write(1, "0x", 2);
+	i = write(1, "0x", 2);
 	i += putwhatever_num(p, s);
 	return (i);
 }
 
 int	putwhatever_num(uintptr_t p, char *s)
 {
-	int	i;
+	static int	i;
 	uintptr_t	len;
 
 	i = 0;

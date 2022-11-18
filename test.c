@@ -18,11 +18,17 @@ int main(void)
 	int i;
     int j;
     int c = 21354;
-    int *p;
+    int a;
+    int b;
+    //int *p;
     
-    p = &c;
+    //p = "";
     i = ft_printf("%cjskfha%s\n",',',"aaaaa");
     j = printf("%cjskfha%s\n",',',"aaaaa");
-    ft_printf("\nft_printf:len:%i\n%p%%%x",i,p,c);
-    printf("\nlen:%i\n%p%%%x",j,p,c);
+    ft_printf("\nft_printf:len:%i\n%p%%%x",i,"",c);
+    printf("\nprintf:len:%i\n%p%%%x",j,"",c);
+
+    a = ft_printf("\n%p","a");
+    b = printf("\n%p","a");
+    printf("\nft:%i\no:%i\n",a,b);
 }
