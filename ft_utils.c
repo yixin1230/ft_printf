@@ -6,22 +6,25 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 11:05:17 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/11/17 18:46:56 by yizhang       ########   odam.nl         */
+/*   Updated: 2022/12/01 10:36:44 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putchar(unsigned int c);
 int	ft_putstr(char *s);
 int	ft_putptr(uintptr_t p);
 int	putwhatever_num(uintptr_t p, char *s);
+int	ft_putint(long nb);
 
 int	ft_putstr(char *s)
 {
 	int	i;
 
 	i = 0;
+	if (!s)
+		return (ft_putstr("(null)"));
 	while(s[i])
 	{
 		ft_putchar(s[i]);
@@ -49,17 +52,50 @@ int	ft_putptr(uintptr_t p)
 
 int	putwhatever_num(uintptr_t p, char *s)
 {
-	static int	i;
+	int	i;
 	uintptr_t	len;
+	uintptr_t	save;
 
+	save = p;
 	i = 0;
 	len = (uintptr_t)ft_strlen(s);
 	if (p < len)
 		i += write(1, &s[p], 1);
 	else
 	{
+		while(save > 0)
+		{
+			save /= len;
+			i++;
+		}
 		putwhatever_num(p / len, s);
-		i += write(1, &s[p % len], 1);
+		write(1, &s[p % len], 1);
+	}
+	return (i);
+}
+
+int	ft_putint(long nb)
+{
+	int	i;
+	long	save;
+
+	if (nb < 0)
+	{
+		i = ft_putchar('-');
+		nb = -nb;
+	}
+	save = nb;
+	if (nb <= 9)
+		i += ft_putchar(nb + '0');
+	else
+	{
+		while(save > 0)
+		{
+			save /= 10;
+			i++;
+		}
+		ft_putint(nb / 10);
+		ft_putchar(nb % 10 + '0');
 	}
 	return (i);
 }

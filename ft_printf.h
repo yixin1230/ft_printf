@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   libftprintf.h                                      :+:    :+:            */
+/*   ft_printf.h                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/27 10:56:35 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/11/17 20:05:54 by yizhang       ########   odam.nl         */
+/*   Created: 2022/12/01 09:52:06 by yizhang       #+#    #+#                 */
+/*   Updated: 2022/12/01 09:59:55 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 #include "libft/libft.h"
 #include <stdarg.h>
@@ -22,5 +22,6 @@ int	ft_putchar(unsigned int c);
 int	ft_putstr(char *s);
 int	ft_putptr(uintptr_t p);
 int	putwhatever_num(uintptr_t p, char *s);
+int	ft_putint(int long);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/27 08:50:15 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/11/17 18:50:06 by yizhang       ########   odam.nl         */
+/*   Updated: 2022/12/01 10:43:47 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_printf(const char *format, ...)
 {
@@ -36,9 +36,9 @@ int	ft_printf(const char *format, ...)
 			else if (all[i] == 'p')
 				ret += ft_putptr(va_arg(arg, uintptr_t));
 			else if (all[i] == 'd')
-				ret += ft_putstr(ft_itoa(va_arg(arg, double)));
+				ret += ft_putint(va_arg(arg, int));
 			else if (all[i] == 'i')
-				ret += ft_putstr(ft_itoa(va_arg(arg, int)));
+				ret += ft_putint(va_arg(arg, int));
 			else if (all[i] == 'u')
 				ret += putwhatever_num(va_arg(arg, uintptr_t),"0123456789");
 			else if (all[i] == 'x')
