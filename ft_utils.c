@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 11:05:17 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/12/01 15:14:06 by yizhang       ########   odam.nl         */
+/*   Updated: 2022/12/01 17:41:05 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_putstr(char *s)
 	i = 0;
 	if (!s)
 		return (ft_putstr("(null)"));
-	while(s[i])
+	while (s[i])
 	{
 		ft_putchar(s[i]);
 		i++;
@@ -40,7 +40,7 @@ int	ft_putchar(unsigned int c)
 
 int	ft_putptr(uintptr_t p)
 {
-	int	i;
+	int		i;
 	char	*s;
 
 	s = "0123456789abcdef";
@@ -51,7 +51,7 @@ int	ft_putptr(uintptr_t p)
 
 int	putwhatever_num(uintptr_t p, char *s)
 {
-	int	i;
+	int			i;
 	uintptr_t	len;
 	uintptr_t	save;
 
@@ -62,7 +62,7 @@ int	putwhatever_num(uintptr_t p, char *s)
 		i += write(1, &s[p], 1);
 	else
 	{
-		while(save > 0)
+		while (save > 0)
 		{
 			save /= len;
 			i++;
