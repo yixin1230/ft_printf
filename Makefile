@@ -6,7 +6,7 @@
 #    By: yizhang <yizhang@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/12/01 08:30:47 by yizhang       #+#    #+#                  #
-#    Updated: 2022/12/01 08:30:49 by yizhang       ########   odam.nl          #
+#    Updated: 2022/12/01 12:06:29 by yizhang       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libftprintf.a
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
 LIBFT = libft/libft.a
-SRCS = ft_printf.c ft_utils.c
+SRCS = ft_printf.c ft_utils.c ft_utils2.c
 OBJS = ${SRCS:.c=.o}
 
 all: ${NAME}
