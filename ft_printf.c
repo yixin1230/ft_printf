@@ -6,13 +6,13 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/27 08:50:15 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/12/01 17:36:40 by yizhang       ########   odam.nl         */
+/*   Updated: 2022/12/06 10:07:09 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_flags(char c, va_list arg, int ret)
+static int	print_flags(char c, va_list arg, int ret)
 {
 	if (c == 'c')
 		ret += ft_putchar(va_arg(arg, unsigned int));
@@ -33,6 +33,15 @@ int	print_flags(char c, va_list arg, int ret)
 	return (ret);
 }
 
+static int	checkc_spdiux(char *all, int i)
+{
+	if (all[i] != '\0' || all[i] == 'c' || all[i] == 's' || all[i] == 'd'
+		|| all[i] == 'i' || all[i] == 'p' || all[i] == 'u'
+		|| all[i] == 'x' || all[i] == 'X' || all[i] == '%')
+		return (1);
+	return (0);
+}
+
 int	ft_printf(const char *format, ...)
 {
 	char			*all;
@@ -49,6 +58,8 @@ int	ft_printf(const char *format, ...)
 		if (all[i] == '%')
 		{
 			i++;
+			if (checkc_spdiux(all, i) == 0)
+				break ;
 			ret = print_flags(all[i], arg, ret);
 		}
 		else
