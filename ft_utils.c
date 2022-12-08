@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 11:05:17 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/12/01 17:41:05 by yizhang       ########   odam.nl         */
+/*   Updated: 2022/12/08 14:58:35 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_putchar(unsigned int c);
 int	ft_putstr(char *s);
 int	ft_putptr(uintptr_t p);
-int	putwhatever_num(uintptr_t p, char *s);
+int	length(long nb);
 int	ft_putint(long nb);
 
 int	ft_putstr(char *s)
@@ -49,26 +49,17 @@ int	ft_putptr(uintptr_t p)
 	return (i);
 }
 
-int	putwhatever_num(uintptr_t p, char *s)
+int	length(long nb)
 {
-	int			i;
-	uintptr_t	len;
-	uintptr_t	save;
+	int	i;
 
-	save = p;
 	i = 0;
-	len = (uintptr_t)ft_strlen(s);
-	if (p < len)
-		i += write(1, &s[p], 1);
-	else
+	if (nb < 9)
+		return (i++);
+	while (nb > 0)
 	{
-		while (save > 0)
-		{
-			save /= len;
-			i++;
-		}
-		putwhatever_num(p / len, s);
-		write(1, &s[p % len], 1);
+		nb /= 10;
+		i++;
 	}
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 11:34:13 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/12/06 09:59:10 by yizhang       ########   odam.nl         */
+/*   Updated: 2022/12/08 14:56:21 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ int main(void)
     printf(" %i %i %i %i %i %i %i", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42); */
     
 	ft_printf("\n test:");
-	ft_printf("%s%","fasdfa");
+	ft_printf("%");
+    ft_printf("\n");
 
 	/* printf("\n test:");
 	printf("%4"); */

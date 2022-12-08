@@ -6,11 +6,13 @@
 /*   By: yizhang <yizhang@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/27 08:50:15 by yizhang       #+#    #+#                 */
-/*   Updated: 2022/12/06 10:31:00 by yizhang       ########   odam.nl         */
+/*   Updated: 2022/12/08 15:08:02 by yizhang       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	putwhatever_num(uintptr_t p, char *s);
 
 static int	print_flags(char c, va_list arg, int ret)
 {
@@ -33,13 +35,28 @@ static int	print_flags(char c, va_list arg, int ret)
 	return (ret);
 }
 
-static int	check_cspdiux(char *all, int i)
+int	putwhatever_num(uintptr_t p, char *s)
 {
-	if (all[i] != '\0' || all[i] == 'c' || all[i] == 's' || all[i] == 'd'
-		|| all[i] == 'i' || all[i] == 'p' || all[i] == 'u'
-		|| all[i] == 'x' || all[i] == 'X' || all[i] == '%')
-		return (1);
-	return (0);
+	int			i;
+	uintptr_t	len;
+	uintptr_t	save;
+
+	save = p;
+	i = 0;
+	len = (uintptr_t)ft_strlen(s);
+	if (p < len)
+		i += write(1, &s[p], 1);
+	else
+	{
+		while (save > 0)
+		{
+			save /= len;
+			i++;
+		}
+		putwhatever_num(p / len, s);
+		write(1, &s[p % len], 1);
+	}
+	return (i);
 }
 
 int	ft_printf(const char *format, ...)
@@ -58,7 +75,7 @@ int	ft_printf(const char *format, ...)
 		if (all[i] == '%')
 		{
 			i++;
-			if (check_cspdiux(all, i) == 0)
+			if (!all[i])
 				break ;
 			ret = print_flags(all[i], arg, ret);
 		}
